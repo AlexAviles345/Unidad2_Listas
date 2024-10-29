@@ -16,10 +16,10 @@ public class SinglyLinkedList {
         } else {
             Nodo temp = cabeza; // Iniciamos desde la cabeza (El primero ps)
             // Recorremos todos los nodos hasta encontrar un null en las referencias
-            while (temp.siguiente != null) {
-                temp = temp.siguiente;
+            while (temp.getSiguiente() != null) {
+                temp = temp.getSiguiente();
             }
-            temp.siguiente = nuevoNodo; // Se pasa al siguiente nodo 
+            temp.setSiguiente(nuevoNodo); // Se pasa al siguiente nodo 
         }
     }
 
@@ -27,8 +27,8 @@ public class SinglyLinkedList {
         Nodo temp = cabeza; // Comienzo desde la cabeza (inicio)
         // Mientras temp no sea nulo
         while(temp != null){
-            System.out.print(temp.dato + "->");
-            temp = temp.siguiente;
+            System.out.print(temp.getDato() + "->");
+            temp = temp.getSiguiente();
         }
         System.out.println("null");
     }
@@ -42,13 +42,13 @@ public class SinglyLinkedList {
             Nodo temp = cabeza; // Comenzamos desde la cabeza (inicio)
             // Mientras temp no sea nulo
             while (temp != null) {
-                if( temp.dato == dato ){
+                if( temp.getDato() == dato ){
                     // Si encuentra el nodo, se rompe el ciclo y el metodo
                     System.out.println("El dato " + dato + " si existe en la lista");
                     return true;
                 }
                 else{
-                    temp = temp.siguiente;  // Se pasa al siguiente nodo 
+                    temp = temp.getSiguiente();  // Se pasa al siguiente nodo 
                 }
             }
         }
@@ -61,21 +61,21 @@ public class SinglyLinkedList {
         if(cabeza == null){
             System.out.println("No se puede eliminar porque la lista esta vacia");
         }
-        if(cabeza.dato == valor){
-            cabeza = cabeza.siguiente;
+        if(cabeza.getDato() == valor){
+            cabeza = cabeza.getSiguiente();
             return;
         }
         Nodo temp = cabeza;
         Nodo anterior = null;
-        while (temp != null && temp.dato != valor) { // Recorrer hasta encontrar el nodo con el valor
+        while (temp != null && temp.getDato() != valor) { // Recorrer hasta encontrar el nodo con el valor
             anterior = temp;
-            temp= temp.siguiente;
+            temp= temp.getSiguiente();
         }
         if(temp == null){
             System.out.println("No se encontro el valor");
             return;
         }
-        anterior.siguiente = temp.siguiente;
+        anterior.setSiguiente(temp.getSiguiente());
         System.out.println("Se elimina correctamente " + valor);
     }
 }
